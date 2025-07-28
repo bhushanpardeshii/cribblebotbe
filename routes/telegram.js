@@ -150,7 +150,9 @@ router.post('/analyze', requireAuth, async (req, res) => {
         else if (result.score < 0) negative++;
         else neutral++;
 
-        if (msg.fromId) userIds.add(msg.fromId);
+        if (msg.fromId) {
+          userIds.add(msg.fromId.value);
+        }
       } catch (error) {
         console.log(` Error analyzing message: ${error.message}`);
       }
